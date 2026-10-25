@@ -64,3 +64,9 @@ func transition_to(state_name: String) -> void:
 ## Get the current state name
 func get_current_state_name() -> String:
 	return current_state.name if current_state else ""
+
+## True if a state with this name is registered (i.e. its node exists as a child).
+## Lets callers make optional mechanics removable: guard a transition with this and
+## deleting the state node simply disables that mechanic, with no "state not found".
+func has_state(state_name: String) -> bool:
+	return states.has(state_name.to_lower())
